@@ -3,5 +3,4 @@ python-dotenv
 requests
 pyodbc
 pandas
-requests==2.31.0
 numpy
