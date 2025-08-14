@@ -3,7 +3,7 @@ import azure.functions as func
 
 import logging
 import os
-import requests
+# import requests
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
