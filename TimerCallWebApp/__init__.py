@@ -47,7 +47,11 @@ default_nested_bson = orjson.dumps({})
 orjson_dumps = orjson.dumps
 orjson_loads = orjson.loads
 
+from .myfunction import testtest
+
 def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と一致させる
+
+    testtest() # 外部読み込み確認
 
     if myTimer.past_due:
         print("Timer is past due!")
@@ -176,22 +180,22 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
         print("データ取得開始！！！")
         stmt_sample = (
             select(SearchIndexData.nested_bson)
-            # .limit(10)
+            .limit(10)
         )
 
-        with DBSession() as db_session:
-            basic_auth = db_session.execute(stmt_sample).all() # sqlalchmey2.0の書き方
-            if basic_auth:
-                db_res = [
-                    orjson_loads(_b) for (_b,) in basic_auth
-                ]
-            else:
-                db_res = []
-            print(len(db_res))
-        print("データ取得おわり！！！")
-        df = pd.DataFrame(db_res)
-        len(df)
-        print("これデータフレーム！")
+        # with DBSession() as db_session:
+        #     basic_auth = db_session.execute(stmt_sample).all() # sqlalchmey2.0の書き方
+        #     if basic_auth:
+        #         db_res = [
+        #             orjson_loads(_b) for (_b,) in basic_auth
+        #         ]
+        #     else:
+        #         db_res = []
+        #     print(len(db_res))
+        # print("データ取得おわり！！！")
+        # df = pd.DataFrame(db_res)
+        # len(df)
+        # print("これデータフレーム！")
 
         df2 = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
             'B': ['B1', 'B2', 'B3'],
