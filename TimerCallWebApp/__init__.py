@@ -67,6 +67,9 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
     print(odbc_driver)
     print("ここODBCドライバー")
 
+    for i in range(36000):
+        print(f"作業中{i}")
+
 
     df = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
         'B': ['B1', 'B2', 'B3'],
