@@ -67,8 +67,41 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
     print(odbc_driver)
     print("ここODBCドライバー")
 
+    base_url = "https://script.google.com/macros/s/AKfycbxhiKxdfJDRhkF7DZfJfEI8p-O1ZjUJHWdzc3Voalug8VNsryuRWEUwAGnUiAbQ7qxF/exec"
+
+    headers = {'content-type': 'application/json'}
+    data = {
+        "col_1":"log送信テスト",
+        "col_2":"log送信テスト",
+        "col_3":"log送信テスト",
+        "col_4":"log送信テスト",
+        "col_5":"log送信テスト",
+        "col_6":"log送信テスト",
+        "col_7":"log送信テスト",
+    }
+    res_auth = requests.post(url=base_url,headers=headers,json=data)
+    res_auth.text
+
+    test_i = 0
     for i in range(36000):
-        print(f"作業中{i}")
+        test_i +=1
+        if test_i > 200:
+            base_url = "https://script.google.com/macros/s/AKfycbxhiKxdfJDRhkF7DZfJfEI8p-O1ZjUJHWdzc3Voalug8VNsryuRWEUwAGnUiAbQ7qxF/exec"
+
+            headers = {'content-type': 'application/json'}
+            data = {
+                "col_1":"log送信テスト",
+                "col_2":"log送信テスト",
+                "col_3":"log送信テスト",
+                "col_4":"log送信テスト",
+                "col_5":"log送信テスト",
+                "col_6":"log送信テスト",
+                "col_7":str(i),
+            }
+            res_auth = requests.post(url=base_url,headers=headers,json=data)
+            res_auth.text
+            test_i = 0
+        print(f"作業中{i}", flush=True)  # flushで即時出力
 
 
     df = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
