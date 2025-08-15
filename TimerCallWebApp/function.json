@@ -4,9 +4,9 @@
 			"name": "myTimer",
 			"type": "timerTrigger",
 			"direction": "in",
-			"schedule": "0 */3 * * * *",
+			"schedule": "0 0 0 0 1 *",
 			"useMonitor": true,
-			"runOnStartup": false
+			"runOnStartup": true
 		}
 	]
 }
