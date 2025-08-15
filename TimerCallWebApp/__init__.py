@@ -176,7 +176,7 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
         print("データ取得開始！！！")
         stmt_sample = (
             select(SearchIndexData.nested_bson)
-            .limit(10)
+            # .limit(10)
         )
 
         with DBSession() as db_session:
@@ -189,11 +189,18 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
                 db_res = []
             print(len(db_res))
         print("データ取得おわり！！！")
+        df = pd.DataFrame(db_res)
+        len(df)
+        print("これデータフレーム！")
 
-        df = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
+        df2 = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
             'B': ['B1', 'B2', 'B3'],
             'C': ['C1', 'C2', 'C3']},
             index=['ONE', 'TWO', 'THREE'])
-        print(df)
+        print(df2)
+
+        time.sleep(15)
+        print("処理終わり！")
+
 
     pass
