@@ -4,3 +4,7 @@ requests
 pyodbc
 pandas
 numpy
+sqlalchemy
+mysql-connector-python
+orjson
+
