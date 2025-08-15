@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 import re
 import pyodbc
 
+import pandas as pd
+
 load_dotenv(override=True)  # ローカル用。Azure ではアプリ設定を参照
 TARGET_WEBAPP_URL = os.getenv("TARGET_WEBAPP_URL", "")
 
@@ -65,5 +67,11 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
     print(odbc_driver)
     print("ここODBCドライバー")
 
-    
+
+    df = pd.DataFrame({'A': ['A1', 'A2', 'A3'],
+        'B': ['B1', 'B2', 'B3'],
+        'C': ['C1', 'C2', 'C3']},
+        index=['ONE', 'TWO', 'THREE'])
+    print(df)
+
     pass
