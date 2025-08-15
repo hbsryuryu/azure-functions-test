@@ -253,7 +253,7 @@ def get_df():
     print("データ取得開始！！！")
     stmt_sample = (
         select(SearchIndexData.nested_bson)
-        .limit(1)
+        # .limit(1)
     )
     db_res = []
     with DBSession() as db_session:
