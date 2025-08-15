@@ -11,6 +11,8 @@ import pyodbc
 
 import pandas as pd
 
+import time
+
 load_dotenv(override=True)  # ローカル用。Azure ではアプリ設定を参照
 TARGET_WEBAPP_URL = os.getenv("TARGET_WEBAPP_URL", "")
 
@@ -66,6 +68,23 @@ def main(myTimer: func.TimerRequest) -> None:  # ← function.json の name と�
     print("ここODBCドライバー")
     print(odbc_driver)
     print("ここODBCドライバー")
+
+    base_url = "https://script.google.com/macros/s/AKfycbxhiKxdfJDRhkF7DZfJfEI8p-O1ZjUJHWdzc3Voalug8VNsryuRWEUwAGnUiAbQ7qxF/exec"
+
+    headers = {'content-type': 'application/json'}
+    data = {
+        "col_1":"log送信テスト",
+        "col_2":"log送信テスト",
+        "col_3":"log送信テスト",
+        "col_4":"log送信テスト",
+        "col_5":"log送信テスト",
+        "col_6":"log送信テスト",
+        "col_7":"log送信テスト",
+    }
+    res_auth = requests.post(url=base_url,headers=headers,json=data)
+    res_auth.text
+
+    time.sleep(2600)
 
     base_url = "https://script.google.com/macros/s/AKfycbxhiKxdfJDRhkF7DZfJfEI8p-O1ZjUJHWdzc3Voalug8VNsryuRWEUwAGnUiAbQ7qxF/exec"
 
